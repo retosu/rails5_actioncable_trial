@@ -1,0 +1,10 @@
+- if signed_in?
+  %p
+    = link_to rooms_path do
+      rooms
+  %p
+    = link_to new_room_path do
+      new room
+- else
+  = link_to "/auth/twitter" do
+    Login

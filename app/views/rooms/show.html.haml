@@ -1,0 +1,13 @@
+
+%h1 #{ @room.title }のタイムライン
+= text_field_tag :message, "", id: "message-box"
+= submit_tag "送信", id: "send-btn"
+
+#room-info{data: {room_id: @room.id} }
+#chat-table
+  = render "messages", messages: @messages
+
+= javascript_include_tag "cable"
+:coffee
+  $('#send-btn').on 'click',  ->
+    App.chat.new_message $('#message-box').val()
